@@ -1,6 +1,13 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
+const managingDirector = {
+  name: "Lok Prasad Bhusal",
+  role: "Managing Director",
+  image: "/lovable-uploads/lok-prasad-bhusal.jpg",
+  description: "Visionary leader driving Paiyun Kalika's growth and strategic direction in the global textile market."
+};
+
 const teamMembers = [
   {
     name: "Chakra Pani Bhusal",
@@ -32,10 +39,47 @@ const Team = () => {
           </div>
         </section>
 
-        {/* Team Members */}
+        {/* Team Tree Structure */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+            {/* Managing Director - Top of Tree */}
+            <div className="flex flex-col items-center mb-8">
+              <div className="bg-fabric-50 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 max-w-sm w-full">
+                <div className="aspect-square overflow-hidden">
+                  <img 
+                    src={managingDirector.image} 
+                    alt={managingDirector.name}
+                    className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-6 text-center bg-gradient-to-b from-fabric-100 to-fabric-50">
+                  <h3 className="text-2xl font-serif font-bold text-fabric-800 mb-2">
+                    {managingDirector.name}
+                  </h3>
+                  <p className="text-fabric-700 font-semibold mb-3 text-lg">
+                    {managingDirector.role}
+                  </p>
+                  <p className="text-textile-600 text-sm">
+                    {managingDirector.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Tree Connector Lines */}
+            <div className="flex justify-center mb-8">
+              <div className="flex flex-col items-center">
+                <div className="w-1 h-8 bg-fabric-400"></div>
+                <div className="w-64 md:w-96 h-1 bg-fabric-400"></div>
+                <div className="flex justify-between w-64 md:w-96">
+                  <div className="w-1 h-8 bg-fabric-400"></div>
+                  <div className="w-1 h-8 bg-fabric-400"></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Team Members - Below MD */}
+            <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
               {teamMembers.map((member, index) => (
                 <div 
                   key={index} 
@@ -49,7 +93,7 @@ const Team = () => {
                     />
                   </div>
                   <div className="p-6 text-center">
-                    <h3 className="text-2xl font-serif font-bold text-fabric-800 mb-2">
+                    <h3 className="text-xl font-serif font-bold text-fabric-800 mb-2">
                       {member.name}
                     </h3>
                     <p className="text-fabric-600 font-medium mb-3">
